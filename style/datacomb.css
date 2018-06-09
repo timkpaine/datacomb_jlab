@@ -1,13 +1,7 @@
-html {
-  height: 100%; }
-
-body {
-  height: 100%; }
-
-button {
+div.jp-DatacombViewer button {
   font-family: 'Inconsolata', sans-serif; }
 
-input[type=checkbox] {
+div.jp-DatacombViewer input[type=checkbox] {
   margin: 0 4px; }
 
 .datacomb {

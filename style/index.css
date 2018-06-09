@@ -1,4 +1,17 @@
 div.jp-DatacombViewer {
-    min-height: 400px;
-    min-width: 400px;
+    font-family: 'Inconsolata', sans-serif;
+    font-size: 13px;
+    min-height: 1000px;
+    min-width: 1000px;
+    overflow:scroll;
+    color: #333;
+}
+
+div.jp-DatacombViewer {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+div.jp-DatacombViewer ul {
+  list-style: none;
 }

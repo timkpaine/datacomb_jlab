@@ -14,7 +14,7 @@ import {IRenderMime} from '@jupyterlab/rendermime-interfaces';
 import '../style/index.css';
 import '../style/datacomb.css';
 
-import {Datacomb} from './datacomb';
+import * as Datacomb from './datacomb';
 
 export
 const MIME_TYPE = 'application/datacomb+json';
@@ -45,7 +45,7 @@ export class RenderedDatacomb extends Widget implements IRenderMime.IRenderer {
     renderModel(model: IRenderMime.IMimeModel): Promise<void> {
         const { rows, columns } = model.data[MIME_TYPE] as any | DatacombSpec;
 
-        Datacomb({
+        this._dc = new Datacomb({
           el: this.node,
           data: JSON.parse(rows),
           columns: JSON.parse(columns),
