@@ -26,7 +26,8 @@ export
 const DATACOMB_CONTAINER_CLASS = 'jp-DatacombContainer';
 
 interface DatacombSpec {
-    data: string
+    rows: string,
+    columns: string
 }
 
 
@@ -40,11 +41,7 @@ export class RenderedDatacomb extends Widget implements IRenderMime.IRenderer {
     }
 
     onAfterAttach(msg: Message) : void {
-    }
-
-    renderModel(model: IRenderMime.IMimeModel): Promise<void> {
-        const { rows, columns } = model.data[MIME_TYPE] as any | DatacombSpec;
-
+        const { rows, columns } = this._spec;
         this._dc = new Datacomb({
           el: this.node,
           data: JSON.parse(rows),
@@ -52,9 +49,15 @@ export class RenderedDatacomb extends Widget implements IRenderMime.IRenderer {
           labelAccessor: 'name'
         });
         console.log(this._dc);
+
+    }
+
+    renderModel(model: IRenderMime.IMimeModel): Promise<void> {
+        this._spec = model.data[MIME_TYPE] as any | DatacombSpec;
         return Promise.resolve();
     }
 
+    private _spec: DatacombSpec;
     private _dc: object;
 }
 
